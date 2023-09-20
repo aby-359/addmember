@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Member List</h2>
+  <form method="get">
+    <label for="school">Select School:</label>
+    <select id="school" name="school">
+      <option value="">All Schools</option>
+      {% for school in schools %}
+        <option value="{{ school.name }}" {% if school.name == selected_school %}selected{% endif %}>{{ school.name }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+  </form>
+  <ul>
+    {% for member in members %}
+      <li>{{ member.name }} - {{ member.email }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
